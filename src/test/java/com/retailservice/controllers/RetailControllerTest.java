@@ -50,7 +50,7 @@ public class RetailControllerTest {
         URL url = Resources.getResource("RetailRecord.json");
         String jsonString = Resources.toString(url, Charsets.UTF_8);
 
-        MvcResult result = mockMvc.perform(post("/reward")
+        MvcResult result = mockMvc.perform(post("/rewards")
                 .contentType(MediaType.APPLICATION_JSON)
                 .headers(httpHeaders)
                 .content(jsonString))
@@ -60,7 +60,7 @@ public class RetailControllerTest {
         assertNotNull(result);
         assertNotNull(result.getResponse().getContentAsString());
 
-        mockMvc.perform(post("/reward")
+        mockMvc.perform(post("/rewards")
                 .contentType(MediaType.APPLICATION_JSON)
                 .headers(httpHeaders)
                 .content(""))

@@ -37,7 +37,7 @@ public class RetailController {
      *
      * @return rewardRecord
      */
-    @PostMapping(value = "/reward")
+    @PostMapping(value = "/rewards")
     public ResponseEntity<Object> customerRewards(@RequestBody final RetailRecord retailRecordRequest) {
         LOGGER.info("customerRewards() - Record Request: {}", mapperUtils.getObjectAsJSON(retailRecordRequest));
         if (CollectionUtils.isEmpty(retailRecordRequest.getRetailCustomers())) {
