@@ -1,0 +1,14 @@
+{
+  "customerId": 111666,
+  "pointsEarned": [
+    {
+      "transactionMonth": "Apr",
+      "transactionPointsEarned": 31
+    },
+    {
+      "transactionMonth": "Mar",
+      "transactionPointsEarned": 230
+    }
+  ],
+  "totalPointsEarned": 261
+}
