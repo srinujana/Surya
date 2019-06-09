@@ -12,20 +12,17 @@ Given a record of every transaction during a three month period, calculate the r
 customer per month and total.
 
 **How to run the app:**
-Assuming Java, Maven, Curl or Postman installed on your machine
-Clone the project on your preferred IDE.
+Assuming Java, Maven, Curl or Postman installed on your machine. Clone the project on your preferred IDE.
 run -> clean install spring-boot:run
 OR
 Run the application directly after running mvn install
 
-**Service Context path:** 
+**Application Context path:** 
 http://localhost:8080/retail
 
-**Endpoints Information:**
-Service Endpoint: /rewards
-Endpoint Type: POST
-Endpoint Input: Retailrecord
-Content type: application/json
+**Rewards Endpoint:** http://localhost:8080/retail/rewards
+**Endpoint Type:** POST
+**Endpoint Content type:** application/json
 
 **Sample Request Body:**
    `{  
