@@ -11,9 +11,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
+import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.math.BigDecimal;
 
 import static com.retailservice.constants.RewardK.*;
 
@@ -42,7 +44,7 @@ public class RewardUtils {
             if (!CollectionUtils.isEmpty(retailCustomer.getRetailTransaction())) {
                 List<PointsEarned> pointsEarnedList = new ArrayList<>();
                 for (RetailTransaction retailTransaction : retailCustomer.getRetailTransaction()) {
-                    if (retailTransaction.getAmountSpent() == 0 || retailTransaction.getAmountSpent() == null) {
+                    if (retailTransaction.getAmountSpent().intValue() == 0 || retailTransaction.getAmountSpent() == null) {
                         LOGGER.error("getCustomerPointsEarned() - Amount spent is 0 or null for customer ID: {}", retailCustomer.getCustomerId());
                         throw new RewardValidationException(RewardServiceErrorCode.REWARD_MISSING_AMT_SPENT);
                     }
@@ -73,12 +75,13 @@ public class RewardUtils {
         return rewardResponse;
     }
 
-    public Integer getPointsEarnedByAmount(Integer amountSpent) {
+    public Integer getPointsEarnedByAmount(BigDecimal amountSpent) {
         Integer pointsEarned = 0;
-        if (amountSpent > RWD_AMT_50 && amountSpent <= RWD_AMT_100) {
-            pointsEarned = (amountSpent - RWD_AMT_50);
-        } else if (amountSpent > RWD_AMT_100) {
-            pointsEarned = RWD_AMT_50 + RWD_AMT_MULTIPLY * (amountSpent - RWD_AMT_100);
+        Integer amountSpentRounded = amountSpent.setScale(0, RoundingMode.UP).intValue();
+        if (amountSpentRounded > RWD_AMT_50 && amountSpentRounded <= RWD_AMT_100) {
+            pointsEarned = (amountSpentRounded - RWD_AMT_50);
+        } else if (amountSpentRounded > RWD_AMT_100) {
+            pointsEarned = RWD_AMT_50 + RWD_AMT_MULTIPLY * (amountSpentRounded - RWD_AMT_100);
         }
         return pointsEarned;
 

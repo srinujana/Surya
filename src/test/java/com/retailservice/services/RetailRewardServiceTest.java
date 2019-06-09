@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +36,7 @@ public class RetailRewardServiceTest {
         retailCustomer.setCustomerId(1122334L);
         List<RetailTransaction> retailTransactions = new ArrayList<>();
         RetailTransaction retailTransaction = new RetailTransaction();
-        retailTransaction.setAmountSpent(160);
+        retailTransaction.setAmountSpent(new BigDecimal(160));
         retailTransaction.setPeriod(new Date(12 - 12 - 2019));
         retailTransactions.add(retailTransaction);
         retailCustomer.setRetailTransaction(retailTransactions);

@@ -1,17 +1,19 @@
 package com.retailservice.entity;
 
 import java.util.Date;
+import java.math.BigDecimal;
+
 
 public class RetailTransaction {
 
-    private Integer amountSpent;
+    private BigDecimal amountSpent;
     private Date transactionPeriod;
 
-    public Integer getAmountSpent() {
+    public BigDecimal getAmountSpent() {
         return amountSpent;
     }
 
-    public void setAmountSpent(Integer amountSpent) {
+    public void setAmountSpent(BigDecimal amountSpent) {
         this.amountSpent = amountSpent;
     }
 

@@ -100,6 +100,7 @@ http://localhost:8080/retail
 `
 
 **Notes:**
+Amounts with decimals rounds UP to next number.
 
 **Authors:**
 Surya
